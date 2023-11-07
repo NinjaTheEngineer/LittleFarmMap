@@ -106,14 +106,14 @@ public class DayNightCycle : NinjaMonoBehaviour {
         float time = elapsedTime / (TargetDayLength * 60);
         int hour = Mathf.FloorToInt(time * 24);
         int minute = Mathf.FloorToInt( ((time * 24)-hour)*60 );
-        logd(logId, "Time=" + time + " Hour=" + hour + " Minute=" + minute, true);
+        logd(logId, "Time=" + time + " Hour=" + hour + " Minute=" + minute, true, 10f);
     }
 
     void AdjustSunRotation() {
         float sunAngle = _timeOfDay * 360f;
         dailyRotation.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, sunAngle));
-
         float seasonalAngle = -maxSeasonalTilt * Mathf.Cos(_dayNumber / _yearLength * 2f * Mathf.PI);
+        
         sunSeasonalRotation.localRotation = Quaternion.Euler(new Vector3(seasonalAngle, 0f, 0f));
     }
     [SerializeField]

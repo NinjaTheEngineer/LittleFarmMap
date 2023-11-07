@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class GroundBlock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float Width {  get; private set; }
+    public float Length {  get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    [SerializeField] GameObject visu;
+    private void Awake() {
+        Width = visu.transform.localScale.x;
+        Length = visu.transform.localScale.z;
     }
 }
